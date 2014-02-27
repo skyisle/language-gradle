@@ -1,4 +1,4 @@
-Adds syntax highlighting and snippets to Groovy files in Atom.
+Adds syntax highlighting to Gradle files in Atom.
 
 Originally converted from the gradle.tmbundle.
 
