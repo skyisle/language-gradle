@@ -1,6 +1,6 @@
 {
   "name": "language-gradle",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "description": "Gradle syntax highlighting support in Atom",
   "repository": "https://github.com/skyisle/language-gradle",
