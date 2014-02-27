@@ -2,7 +2,7 @@
   "name": "language-gradle",
   "version": "0.0.2",
   "private": true,
-  "description": "Gradle syntax highlighting support in Atom",
+  "description": "Gradle support in Atom",
   "repository": "https://github.com/skyisle/language-gradle",
   "license": "MIT",
   "engines": {
