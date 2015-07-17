@@ -1,0 +1,171 @@
+'.source.groovy':
+  'Script Default Task':
+    'prefix': 'scriptTask'
+    'body': """task ${1:taskName} {
+        description "${2:great description here}"
+      $3
+      }
+      $4"""
+
+  'Script dependsOn':
+    'prefix': 'scriptDependsOn'
+    'body': 'dependsOn $1'
+
+  'Script finalizedBy':
+    'prefix': 'scriptFinalizedBy'
+    'body': 'finalizedBy ${1:taskName}'
+
+  'Script mustRunAfter':
+    'prefix': 'scriptMustRunAfter'
+    'body': 'mustRunAfter ${1:taskName}'
+
+  'Script shouldRunAfter':
+    'prefix': 'scriptShouldRunAfter'
+    'body': 'shouldRunAfter ${1:taskName}'
+
+  'Script onlyIf':
+    'prefix': 'scriptOnlyIf'
+    'body': """${1:taskName}.onlyIf {
+        ${2://condition(s)}
+      }
+      $3"""
+
+  'Script Do Last':
+    'prefix': 'scriptDoLast'
+    'body': """doLast {
+      ${1:// do something}
+    }
+    $2
+    """
+
+  'Script Do First':
+    'prefix': 'scriptDoFirst'
+    'body': """doFirst {
+        ${1:// do something}
+    }
+    $2
+    """
+
+  'Script Task Do First':
+    'prefix': 'scriptTaskDoFirst'
+    'body': """
+      task ${1:taskName} {
+        $2
+        doFirst {
+          ${3:// do something}
+        }$4
+      }
+      $5
+      """
+
+  'Script Task Do Last':
+    'prefix': 'scriptTaskDoLast'
+    'body': """
+      task ${1:taskName} {
+        description "${2:description goes here}" $3
+        doLast {
+          ${4:// do something}
+        }$5
+      }
+      $6
+      """
+
+  'Script Task Type':
+    'prefix': 'ScriptTaskType'
+    'body': """
+      task ${1}(type: $2){
+        ${3://task code}
+      }
+      $4
+      """
+
+  'Script Graph When Ready':
+    'prefix': 'scriptGraphWhenReady'
+    'body': """gradle.taskGraph.whenReady { graph ->
+        $1
+      }
+      $2
+      """
+
+  'Script Tasks Add Rule':
+      'prefix': 'scriptTaskAddRule'
+      'body': """ tasks.addRule("${1:rule description}") { String taskName ->
+        $2
+      }
+      $3
+      """
+
+  'Custom Task Class':
+    'prefix': 'scriptCustomTaskClass'
+    'body': """class ${1:MyTask} extends DefaultTask {
+      ${2: def myvar}
+
+      @TaskAction
+      ${3:def mymethod}{
+        ${4://code}
+      }
+    }
+    $5
+      """
+  'Log quiet':
+    'prefix': 'logQuiet'
+    'body': 'logger.quiet "$1"'
+
+  'Log error':
+    'prefix': 'logError'
+    'body': 'logger.error "$1"'
+
+  'Log warn':
+    'prefix': 'logWarn'
+    'body': 'logger.warn"$1"'
+
+  'Log lifecycle':
+    'prefix': 'logLifecycle'
+    'body': 'logger.lifecycle "$1"'
+
+  'Log info':
+    'prefix': 'logInfo'
+    'body': 'logger.info "$1"'
+
+  'Log debug':
+    'prefix': 'logDebug'
+    'body': 'logger.debug "$1"'
+
+  'Apply plugin by class':
+    'prefix': 'applyPluginByClass'
+    'body': 'apply plugin: ${1:org.plugin.MyPlugin}'
+
+  'Apply plugin: "ID"':
+    'prefix': 'applyPluginByID'
+    'body': 'apply plugin: "${1:org.plugin.MyPlugin}" $2'
+
+  'Apply script plugin':
+    'prefix': 'applyPluginByScript'
+    'body': 'apply from: "${1:org.plugin.MyPlugin}" $2'
+
+  'Proj hasProperty':
+    'prefix': 'projHasProperty'
+    'body': "project.hasProperty('${1:somePropertyName}') $2"
+
+  'Graph hasTask':
+    'prefix': 'graphHasTask'
+    'body': "graph.hasTask(':${1:somePropertyName}') $2"
+
+  'Throw Gradle Exception':
+    'prefix': 'throwGradleException'
+    'body': "throw new GradleException('${1:custom error message}') $2"
+
+
+  'Project Create Task':
+    'prefix': 'projCreateTask'
+    'body': "project.tasks.create('${1:taskName}' ${2:,optionaltype}) $3"
+
+  'Create Gradle Plugin':
+    'prefix': 'createGradlePlugin'
+    'body': """class ${1:className} implements Plugin <Project> {
+      void apply(Project project){
+        $2
+      }$3
+    }
+    $4
+    """
