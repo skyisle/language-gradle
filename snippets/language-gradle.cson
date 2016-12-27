@@ -1,0 +1,23 @@
+'.source.groovy.gradle':
+  'task execution':
+    'prefix': 'task'
+    'body': 'task \${1:name} << { \n  \${2:// body...} \n}'
+  'apply plugin':
+    'prefix': 'apply plugin'
+    'body': 'apply plugin: \'\${1:name}\''
+  'apply from':
+    'prefix': 'apply from'
+    'body': 'apply from: \'${1:file}\''
+  # task types: 
+  'copy task':
+    'prefix': 'taskCopy'
+    'body': 'task \${1:name}(type: Copy) { \n  from \${2:\'source\'} \n  into \${3:\'destination\'} \n  include \${4:\'directory/**/*.txt\'} \n  exclude \${5:\'directory/**/*.md\'} \n}'
+  'delete task':
+    'prefix': 'taskDelete'
+    'body': 'task \${1:name}(type: Delete) { \n  delete \${2:\'directory\'}, \${3:\'file\'} \n }'
+  'exec task':
+    'prefix': 'taskExec'
+    'body': 'task \${1:name}(type: Exec) { \n  workingDir \${2:\'directory\'} \n  commandLine \${3:\'command\'} \n}'
+  'zip task':
+    'prefix': 'taskZip'
+    'body': 'task \${1:name}(type: Zip) { \n  baseName = \${2:\'artifact\'} \n  from \${3:\'source\'} \n  destinationDir \${4:file(\'destination\')} \n  include \${5:\'directory/**/*.txt\'} \n  exclude \${6:\'directory/**/*.md\'} \n}'
