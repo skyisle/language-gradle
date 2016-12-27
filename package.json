@@ -8,7 +8,9 @@
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "language-groovy" : "0.x",
+  },
   "bugs": {
     "url": "https://github.com/skyisle/language-gradle/issues"
   }
